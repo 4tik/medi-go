@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield, Brain, Activity, Bell, Lock, Database, Zap } from 'lucide-react';
+import { Shield, Brain, Activity, Bell, Lock, Database, Zap, Cpu } from 'lucide-react';
 import { SectionHeading } from './ui';
 
 const features = [
@@ -68,7 +68,12 @@ export default function Technology() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Reusable Section Heading */}
         <SectionHeading
-          badge="🔬 Healthcare Technology"
+          badge={
+            <span className="inline-flex items-center gap-1.5">
+              <Cpu className="w-4 h-4 text-indigo-600" />
+              Healthcare Technology
+            </span>
+          }
           badgeVariant="indigo"
           title="Powered by"
           gradientTitle="Cutting-Edge Technology"

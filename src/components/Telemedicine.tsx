@@ -1,5 +1,18 @@
 import { motion } from 'framer-motion';
-import { Video, MessageSquare, FileText, RefreshCw, Shield, Wifi, Monitor, Smartphone } from 'lucide-react';
+import {
+  Video,
+  MessageSquare,
+  FileText,
+  RefreshCw,
+  Shield,
+  Wifi,
+  Monitor,
+  Smartphone,
+  Mic,
+  PhoneOff,
+  Settings,
+  CheckCircle2,
+} from 'lucide-react';
 import { Badge } from './ui';
 
 const features = [
@@ -91,20 +104,23 @@ export default function Telemedicine() {
                 {/* Call controls */}
                 <div className="flex items-center justify-center gap-2 sm:gap-3 mt-4">
                   {[
-                    { icon: '🎤', color: 'bg-slate-700' },
-                    { icon: '📷', color: 'bg-slate-700' },
-                    { icon: '📞', color: 'bg-rose-500' },
-                    { icon: '💬', color: 'bg-slate-700' },
-                    { icon: '⚙️', color: 'bg-slate-700' },
-                  ].map((ctrl, i) => (
-                    <button
-                      key={i}
-                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full ${ctrl.color} text-sm sm:text-base flex items-center justify-center hover:opacity-85 transition-opacity cursor-pointer`}
-                      aria-label="Call control"
-                    >
-                      {ctrl.icon}
-                    </button>
-                  ))}
+                    { icon: Mic, label: 'Mute', color: 'bg-slate-700' },
+                    { icon: Video, label: 'Video', color: 'bg-slate-700' },
+                    { icon: PhoneOff, label: 'End Call', color: 'bg-rose-500 hover:bg-rose-600' },
+                    { icon: MessageSquare, label: 'Chat', color: 'bg-slate-700' },
+                    { icon: Settings, label: 'Settings', color: 'bg-slate-700' },
+                  ].map((ctrl, i) => {
+                    const CtrlIcon = ctrl.icon;
+                    return (
+                      <button
+                        key={i}
+                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full ${ctrl.color} text-white flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer`}
+                        aria-label={ctrl.label}
+                      >
+                        <CtrlIcon className="w-4 h-4" />
+                      </button>
+                    );
+                  })}
                 </div>
 
                 {/* In-call chat snippet */}
@@ -151,8 +167,8 @@ export default function Telemedicine() {
               className="absolute -bottom-4 -left-2 sm:-left-4 bg-white/90 backdrop-blur-xl border border-white/50 rounded-2xl p-3 shadow-xl z-20"
             >
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-sm flex-shrink-0">
-                  ✅
+                <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-800">Rx Sent to Pharmacy</div>
@@ -171,7 +187,10 @@ export default function Telemedicine() {
           >
             <div className="mb-4 inline-block">
               <Badge variant="sky">
-                <span>📱 Telemedicine Platform</span>
+                <span className="flex items-center gap-1.5">
+                  <Smartphone className="w-3.5 h-3.5 text-sky-600" />
+                  Telemedicine Platform
+                </span>
               </Badge>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">

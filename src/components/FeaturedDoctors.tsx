@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Star, Clock, Calendar, BadgeCheck, Video } from 'lucide-react';
+import { Star, Clock, Calendar, BadgeCheck, Video, UserCheck } from 'lucide-react';
 import { Button, Badge } from './ui';
+import { useModal } from '../context/ModalContext';
 
 const doctors = [
   {
@@ -66,6 +67,8 @@ const doctors = [
 ];
 
 export default function FeaturedDoctors() {
+  const { openBooking } = useModal();
+
   return (
     <section id="doctors" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,7 +83,10 @@ export default function FeaturedDoctors() {
           <div>
             <div className="mb-4 inline-block">
               <Badge variant="sky">
-                <span>👨‍⚕️ Our Specialists</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <UserCheck className="w-3.5 h-3.5 text-sky-600" />
+                  Our Specialists
+                </span>
               </Badge>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-3">
@@ -192,7 +198,12 @@ export default function FeaturedDoctors() {
                     <span className="text-[11px] text-slate-400 block leading-none mb-1">Consult fee</span>
                     <div className="text-base font-bold text-slate-900">{doctor.consultFee}</div>
                   </div>
-                  <Button size="sm" variant="primary">
+                  <Button
+                    size="sm"
+                    variant="primary"
+                    className="cursor-pointer"
+                    onClick={() => openBooking(doctor.name)}
+                  >
                     {doctor.online ? <Video className="w-3.5 h-3.5" /> : <Calendar className="w-3.5 h-3.5" />}
                     Book Now
                   </Button>

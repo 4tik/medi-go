@@ -13,57 +13,68 @@ import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import { ModalProvider } from './context/ModalContext';
+import { AuthModal } from './components/modals/AuthModal';
+import { BookingModal } from './components/modals/BookingModal';
+import { Toast } from './components/ui/Toast';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-sky-500 selection:text-white">
-      {/* Sticky Navigation */}
-      <Navbar />
+    <ModalProvider>
+      <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-sky-500 selection:text-white">
+        {/* Sticky Navigation */}
+        <Navbar />
 
-      {/* Main Content Sections */}
-      <main id="main-content">
-        {/* 1. Hero Section with Live Search & Telemedicine highlights */}
-        <Hero />
+        {/* Main Content Sections */}
+        <main id="main-content">
+          {/* 1. Hero Section with Live Search & Telemedicine highlights */}
+          <Hero />
 
-        {/* Trust Indicators Bar */}
-        <TrustBar />
+          {/* Trust Indicators Bar */}
+          <TrustBar />
 
-        {/* 2. Comprehensive Healthcare Services */}
-        <Services />
+          {/* 2. Comprehensive Healthcare Services */}
+          <Services />
 
-        {/* 3. Medical Specialties */}
-        <Specialties />
+          {/* 3. Medical Specialties */}
+          <Specialties />
 
-        {/* 4. Featured Board-Certified Doctors */}
-        <FeaturedDoctors />
+          {/* 4. Featured Board-Certified Doctors */}
+          <FeaturedDoctors />
 
-        {/* 5. Simple 4-Step Patient Process */}
-        <HowItWorks />
+          {/* 5. Simple 4-Step Patient Process */}
+          <HowItWorks />
 
-        {/* 6. Telemedicine Platform Showcase */}
-        <Telemedicine />
+          {/* 6. Telemedicine Platform Showcase */}
+          <Telemedicine />
 
-        {/* 7. Patient Testimonials Carousel */}
-        <Testimonials />
+          {/* 7. Patient Testimonials Carousel */}
+          <Testimonials />
 
-        {/* 8. Enterprise Healthcare Technology & Security */}
-        <Technology />
+          {/* 8. Enterprise Healthcare Technology & Security */}
+          <Technology />
 
-        {/* 9. Mobile App Showcase */}
-        <MobileApp />
+          {/* 9. Mobile App Showcase */}
+          <MobileApp />
 
-        {/* 10. Frequently Asked Questions Accordion */}
-        <FAQ />
+          {/* 10. Frequently Asked Questions Accordion */}
+          <FAQ />
 
-        {/* 11. Final Call to Action */}
-        <FinalCTA />
-      </main>
+          {/* 11. Final Call to Action */}
+          <FinalCTA />
+        </main>
 
-      {/* Footer & Accreditations */}
-      <Footer />
+        {/* Footer & Accreditations */}
+        <Footer />
 
-      {/* Floating Scroll to Top button */}
-      <ScrollToTop />
-    </div>
+        {/* Floating Scroll to Top button */}
+        <ScrollToTop />
+
+        {/* Interactive Modals & Toast Notifications */}
+        <AuthModal />
+        <BookingModal />
+        <Toast />
+      </div>
+    </ModalProvider>
   );
 }

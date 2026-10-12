@@ -1,12 +1,26 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Calendar, Video, Star, Shield, ArrowRight, CheckCircle } from 'lucide-react';
+import {
+  Search,
+  Calendar,
+  Video,
+  Star,
+  Shield,
+  ArrowRight,
+  CheckCircle,
+  Users,
+  Stethoscope,
+  Building2,
+  CheckCircle2,
+} from 'lucide-react';
 import { Button, Badge, Card } from './ui';
+import { useModal } from '../context/ModalContext';
 
 const stats = [
-  { value: '50K+', label: 'Patients Served', icon: '👥' },
-  { value: '500+', label: 'Specialists', icon: '🩺' },
-  { value: '100+', label: 'Clinics', icon: '🏥' },
-  { value: '98%', label: 'Satisfaction', icon: '⭐' },
+  { value: '50K+', label: 'Patients Served', icon: Users, color: 'text-sky-600' },
+  { value: '500+', label: 'Specialists', icon: Stethoscope, color: 'text-teal-600' },
+  { value: '100+', label: 'Clinics', icon: Building2, color: 'text-blue-600' },
+  { value: '98%', label: 'Satisfaction', icon: Star, color: 'text-amber-500' },
 ];
 
 const features = [
@@ -16,6 +30,8 @@ const features = [
 ];
 
 export default function Hero() {
+  const { openBooking, showToast } = useModal();
+  const [searchQuery, setSearchQuery] = useState('');
   return (
     <section
       id="home"
@@ -55,7 +71,10 @@ export default function Hero() {
               <Badge variant="sky" pulse>
                 <span>#1 Trusted Healthcare Platform</span>
                 <span className="text-sky-300">•</span>
-                <span>Rated 4.9/5 ⭐</span>
+                <span className="flex items-center gap-1">
+                  Rated 4.9/5
+                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                </span>
               </Badge>
             </motion.div>
 
@@ -105,15 +124,18 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-3 mb-8"
             >
-              <a href="#book">
-                <Button size="lg" variant="primary" className="w-full sm:w-auto">
-                  <Calendar className="w-5 h-5" />
-                  Book Appointment
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
-              </a>
-              <a href="#doctors">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="primary"
+                className="w-full sm:w-auto cursor-pointer"
+                onClick={() => openBooking()}
+              >
+                <Calendar className="w-5 h-5" />
+                Book Appointment
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+              <a href="#doctors" className="w-full sm:w-auto">
+                <Button size="lg" variant="secondary" className="w-full sm:w-auto cursor-pointer">
                   <Search className="w-5 h-5" />
                   Find a Doctor
                 </Button>
@@ -121,24 +143,36 @@ export default function Hero() {
             </motion.div>
 
             {/* Search Input Bar */}
-            <motion.div
+            <motion.form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (searchQuery.trim()) {
+                  showToast(`Searching for "${searchQuery}" — 12 specialists found!`, 'info');
+                  const target = document.getElementById('doctors');
+                  if (target) target.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  openBooking();
+                }
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="bg-white rounded-2xl shadow-lg border border-slate-100 p-2 flex flex-col sm:flex-row gap-2 max-w-xl"
+              className="bg-white rounded-2xl shadow-xl border-2 border-slate-200 p-2 flex flex-col sm:flex-row gap-2 max-w-xl"
             >
               <div className="flex-1 flex items-center gap-3 px-3 py-1">
                 <Search className="w-4 h-4 text-slate-400 flex-shrink-0" />
                 <input
                   type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search doctors, specialties, clinics..."
                   className="w-full text-sm text-slate-700 outline-none placeholder-slate-400 bg-transparent"
                 />
               </div>
-              <Button size="sm" variant="primary" className="sm:px-6">
+              <Button size="sm" variant="primary" className="sm:px-6 cursor-pointer" type="submit">
                 Search
               </Button>
-            </motion.div>
+            </motion.form>
           </div>
 
           {/* Right Visual / Doctor & Floating Highlights */}
@@ -169,8 +203,8 @@ export default function Hero() {
               className="absolute top-4 -left-2 sm:left-2 lg:-left-4 z-20 bg-white/85 backdrop-blur-xl border border-white/50 rounded-2xl p-3 shadow-xl max-w-[210px] sm:max-w-xs"
             >
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-base flex-shrink-0">
-                  ✅
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-xs sm:text-sm font-bold text-slate-800">Appointment Confirmed</div>
@@ -249,24 +283,29 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.6 }}
           className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4"
         >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
-            >
-              <Card className="p-5 text-center">
-                <div className="text-3xl mb-1">{stat.icon}</div>
-                <div className="text-2xl font-extrabold bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent mb-0.5">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm text-slate-500 font-medium">
-                  {stat.label}
-                </div>
-              </Card>
-            </motion.div>
-          ))}
+          {stats.map((stat, i) => {
+            const Icon = stat.icon;
+            return (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
+              >
+                <Card className="p-5 text-center">
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-3 shadow-xs">
+                    <Icon className={`w-5 h-5 ${stat.color}`} />
+                  </div>
+                  <div className="text-2xl font-extrabold bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent mb-0.5">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs sm:text-sm text-slate-500 font-medium">
+                    {stat.label}
+                  </div>
+                </Card>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote, Stethoscope, User } from 'lucide-react';
 import { SectionHeading } from './ui';
 
 const testimonials = [
@@ -10,7 +10,7 @@ const testimonials = [
     treatment: 'Cardiology Consultation',
     rating: 5,
     review: "Medi Go has completely transformed how I manage my heart condition. The video consultation with Dr. Chen was as thorough as any in-person visit. She reviewed my ECG, adjusted my medications, and sent the prescription to my pharmacy within minutes. I've saved hours of travel time!",
-    avatar: '👩',
+    initials: 'ER',
     location: 'New York, NY',
     date: '2 weeks ago',
   },
@@ -20,7 +20,7 @@ const testimonials = [
     treatment: 'Orthopedic Surgery Follow-up',
     rating: 5,
     review: "After my knee replacement surgery, post-op follow-ups via Medi Go were incredibly convenient. The HD video quality was excellent. Dr. Marcus was thorough and addressed all my recovery concerns. The digital prescription for my pain management was sent directly to my pharmacy!",
-    avatar: '👨',
+    initials: 'JT',
     location: 'Chicago, IL',
     date: '1 month ago',
   },
@@ -30,7 +30,7 @@ const testimonials = [
     treatment: 'Pediatric Care for Child',
     rating: 5,
     review: "As a new mom, having access to a pediatrician at 11 PM when my baby had a fever was a lifesaver. Dr. Priya was so patient and thorough. The whole consultation took 20 minutes and I had the prescription ready for pickup. This service is worth every penny!",
-    avatar: '👩‍👧',
+    initials: 'SM',
     location: 'Los Angeles, CA',
     date: '3 weeks ago',
   },
@@ -40,7 +40,7 @@ const testimonials = [
     treatment: 'Dermatology Treatment',
     rating: 5,
     review: "I was skeptical about online dermatology, but Medi Go proved me wrong. The doctor examined my skin condition via video, diagnosed eczema, prescribed the right medication, and arranged a follow-up. My skin cleared up in 2 weeks. Absolutely professional service!",
-    avatar: '👨‍💼',
+    initials: 'RK',
     location: 'Seattle, WA',
     date: '1 week ago',
   },
@@ -50,7 +50,7 @@ const testimonials = [
     treatment: 'Neurology Consultation',
     rating: 5,
     review: "Managing my migraines got so much easier with Medi Go. Dr. Wilson spent 40 minutes understanding my history, ordered the right tests, and developed a personalized treatment plan. The secure messaging feature for follow-up questions is incredibly helpful.",
-    avatar: '👩🏾',
+    initials: 'AJ',
     location: 'Houston, TX',
     date: '2 months ago',
   },
@@ -83,7 +83,12 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Reusable Section Heading */}
         <SectionHeading
-          badge="⭐ Patient Stories"
+          badge={
+            <span className="inline-flex items-center gap-1.5">
+              <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+              Patient Stories
+            </span>
+          }
           badgeVariant="amber"
           title="What Our"
           gradientTitle="Patients Say"
@@ -134,7 +139,8 @@ export default function Testimonials() {
 
               {/* Treatment badge */}
               <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-sky-50 rounded-full text-xs font-semibold text-sky-700 mb-4">
-                🩺 {testimonials[current].treatment}
+                <Stethoscope className="w-3.5 h-3.5 text-sky-600" />
+                <span>{testimonials[current].treatment}</span>
               </div>
 
               {/* Review text */}
@@ -144,8 +150,8 @@ export default function Testimonials() {
 
               {/* Author profile */}
               <div className="flex items-center gap-4 pt-2 border-t border-slate-100">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-2xl shadow-sm flex-shrink-0">
-                  {testimonials[current].avatar}
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-sm font-bold text-white shadow-sm flex-shrink-0 tracking-wider">
+                  {testimonials[current].initials}
                 </div>
                 <div>
                   <div className="font-bold text-slate-800 text-sm sm:text-base">

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Search, Clock, Video, FileText } from 'lucide-react';
+import { Search, Clock, Video, FileText, Zap, Check } from 'lucide-react';
 import { SectionHeading, Button } from './ui';
 
 const steps = [
@@ -68,7 +68,12 @@ export default function HowItWorks() {
         {/* Dark theme Section Heading */}
         <SectionHeading
           dark
-          badge="⚡ Simple 4-Step Process"
+          badge={
+            <span className="inline-flex items-center gap-1.5">
+              <Zap className="w-3.5 h-3.5 text-amber-400" />
+              Simple 4-Step Process
+            </span>
+          }
           title="Healthcare Made"
           gradientTitle="Effortlessly Simple"
           description="From finding the right doctor to receiving your prescription — everything is designed to be fast, easy, and stress-free."
@@ -113,9 +118,10 @@ export default function HowItWorks() {
                   <h3 className="text-lg font-bold text-white mb-2.5">{step.title}</h3>
                   <p className="text-sm text-slate-400 leading-relaxed mb-4">{step.description}</p>
                   <div
-                    className={`inline-flex items-center gap-1 text-xs font-medium ${step.textColor} ${step.badgeBg} px-3 py-1.5 rounded-full border`}
+                    className={`inline-flex items-center gap-1.5 text-xs font-medium ${step.textColor} ${step.badgeBg} px-3 py-1.5 rounded-full border`}
                   >
-                    ✓ {step.detail}
+                    <Check className="w-3.5 h-3.5" />
+                    <span>{step.detail}</span>
                   </div>
                 </div>
               </motion.div>

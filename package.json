@@ -2,6 +2,7 @@
   "name": "medi-go",
   "private": true,
   "version": "0.1.0",
+  "author": "syntax.error",
   "type": "module",
   "scripts": {
     "dev": "vite",

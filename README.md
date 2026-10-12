@@ -233,6 +233,22 @@ To maintain visual consistency and prevent code duplication, follow these guidel
 4. **Elevation Cards:**
    Use `<Card />` for consistent border, shadow, and hover transition states.
 
+5. **Generic Modals & Dialogs:**
+   Use `<ModalEl />` for reusable modals with width managed via the `maxWidth` prop:
+   ```tsx
+   import { ModalEl } from './ui';
+
+   <ModalEl
+     isOpen={isOpen}
+     onClose={handleClose}
+     maxWidth="md" // 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
+     title="Modal Title"
+     subtitle="Modal description"
+   >
+     {/* Modal content */}
+   </ModalEl>
+   ```
+
 ---
 
 ## Styling Guidelines
@@ -258,6 +274,13 @@ To maintain visual consistency and prevent code duplication, follow these guidel
 
 ---
 
+## Author & Credits
+
+Designed and developed by **syntax.error**.
+
+---
+
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).
+

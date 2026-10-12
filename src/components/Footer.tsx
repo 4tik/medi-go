@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Lock, ShieldCheck, CheckCircle2, Accessibility, Code2 } from 'lucide-react';
 
 const footerLinks = {
   Services: [
@@ -95,10 +95,10 @@ const socialLinks = [
 ];
 
 const certifications = [
-  { name: 'HIPAA Compliant', emoji: '🔒' },
-  { name: 'SOC 2 Certified', emoji: '🛡️' },
-  { name: 'ISO 27001', emoji: '✅' },
-  { name: 'WCAG AA', emoji: '♿' },
+  { name: 'HIPAA Compliant', icon: Lock },
+  { name: 'SOC 2 Certified', icon: ShieldCheck },
+  { name: 'ISO 27001', icon: CheckCircle2 },
+  { name: 'WCAG AA', icon: Accessibility },
 ];
 
 export default function Footer() {
@@ -195,12 +195,15 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4">
-              {certifications.map((cert) => (
-                <div key={cert.name} className="flex items-center gap-1.5 text-xs text-slate-400">
-                  <span>{cert.emoji}</span>
-                  <span>{cert.name}</span>
-                </div>
-              ))}
+              {certifications.map((cert) => {
+                const Icon = cert.icon;
+                return (
+                  <div key={cert.name} className="flex items-center gap-1.5 text-xs text-slate-400">
+                    <Icon className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
+                    <span>{cert.name}</span>
+                  </div>
+                );
+              })}
             </div>
             <div className="text-xs text-slate-400 text-center sm:text-right">
               Emergency? Call{' '}
@@ -219,10 +222,19 @@ export default function Footer() {
       {/* Copyright bottom bar */}
       <div className="border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <p className="text-xs text-slate-500">
-              © 2025 Medi Go, Inc. All rights reserved. Medi Go is not a substitute for professional medical advice.
-            </p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div className="space-y-1">
+              <p className="text-xs text-slate-500">
+                © 2025 Medi Go, Inc. All rights reserved. Medi Go is not a substitute for professional medical advice.
+              </p>
+              <p className="text-xs text-slate-400 flex items-center justify-center md:justify-start gap-1.5">
+                <Code2 className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
+                <span>Design and developed by</span>
+                <span className="font-bold text-sky-400 hover:text-sky-300 transition-colors">
+                  syntax.error
+                </span>
+              </p>
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Accessibility', 'Sitemap'].map((link) => (
                 <a key={link} href="#" className="text-xs text-slate-400 hover:text-sky-400 transition-colors">

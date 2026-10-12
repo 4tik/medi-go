@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, User, LogOut, Stethoscope } from 'lucide-react';
 import { Button } from './ui/Button';
+import { useModal } from '../context/ModalContext';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -10,12 +11,13 @@ const navLinks = [
   { label: 'Telemedicine', href: '#telemedicine' },
   { label: 'Clinics', href: '#services' },
   { label: 'About', href: '#technology' },
-  { label: 'Contact', href: '#faq' },
+  { label: 'FAQ', href: '#faq' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openLogin, openBooking, user, logout } = useModal();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -40,7 +42,10 @@ export default function Navbar() {
           <Phone className="w-3 h-3" />
           24/7 Emergency: <strong>1-800-MEDI-GO</strong>
           <span className="mx-3 text-sky-300/60">|</span>
-          <span>🩺 Free First Consultation for New Patients</span>
+          <span className="inline-flex items-center gap-1">
+            <Stethoscope className="w-3.5 h-3.5 text-sky-200" />
+            Free First Consultation for New Patients
+          </span>
           <span className="mx-3 text-sky-300/60">|</span>
           <span>Now Accepting New Patients</span>
         </span>
@@ -92,17 +97,38 @@ export default function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="#login"
-              className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors"
+            {user ? (
+              <div className="flex items-center gap-2 bg-sky-50 border border-sky-100 px-3 py-1.5 rounded-xl">
+                <div className="w-6 h-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-xs font-bold">
+                  <User className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs font-bold text-slate-800">{user.name}</span>
+                <button
+                  onClick={logout}
+                  title="Logout"
+                  className="p-1 text-slate-400 hover:text-rose-600 transition-colors cursor-pointer"
+                  aria-label="Logout"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => openLogin('patient')}
+                className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-sky-600 transition-colors cursor-pointer"
+              >
+                Login
+              </button>
+            )}
+
+            <Button
+              size="md"
+              variant="primary"
+              onClick={() => openBooking()}
             >
-              Login
-            </a>
-            <a href="#book">
-              <Button size="md" variant="primary">
-                Book Appointment
-              </Button>
-            </a>
+              Book Appointment
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -138,20 +164,50 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="pt-3 pb-1 space-y-2">
-                <a
-                  href="#login"
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center px-4 py-3 text-sm font-medium text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50 transition-all"
-                >
-                  Login
-                </a>
-                <a
-                  href="#book"
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center px-4 py-3 text-sm font-semibold text-white rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 shadow-md shadow-sky-500/20"
+                {user ? (
+                  <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-xs">
+                        {user.name.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-slate-800">{user.name}</div>
+                        <div className="text-[10px] text-slate-500">{user.email}</div>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => {
+                        logout();
+                        setIsOpen(false);
+                      }}
+                      className="text-xs text-rose-600 font-semibold cursor-pointer"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsOpen(false);
+                      openLogin('patient');
+                    }}
+                    className="block w-full text-center px-4 py-3 text-sm font-semibold text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50 transition-all cursor-pointer"
+                  >
+                    Login to Account
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsOpen(false);
+                    openBooking();
+                  }}
+                  className="block w-full text-center px-4 py-3 text-sm font-semibold text-white rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 shadow-md shadow-sky-500/20 cursor-pointer"
                 >
                   Book Appointment
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>

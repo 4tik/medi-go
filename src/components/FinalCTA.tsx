@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Calendar, Video, ArrowRight, CheckCircle } from 'lucide-react';
+import { Calendar, Video, ArrowRight, CheckCircle, HeartPulse, User } from 'lucide-react';
 import { Button } from './ui';
+import { useModal } from '../context/ModalContext';
 
 const benefits = [
   'Free first consultation',
@@ -10,6 +11,7 @@ const benefits = [
 ];
 
 export default function FinalCTA() {
+  const { openBooking } = useModal();
   return (
     <section id="book" className="py-20 lg:py-28 relative overflow-hidden bg-gradient-to-r from-sky-500 to-blue-600">
       {/* Background patterns */}
@@ -38,7 +40,8 @@ export default function FinalCTA() {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 border border-white/30 text-white text-xs sm:text-sm font-medium mb-6 shadow-sm"
         >
-          🏥 Start Your Health Journey Today
+          <HeartPulse className="w-4 h-4 text-teal-200" />
+          Start Your Health Journey Today
         </motion.div>
 
         {/* Main Headline */}
@@ -88,23 +91,25 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-10"
         >
-          <a href="#appointment">
-            <Button size="lg" variant="white" className="w-full sm:w-auto text-sky-700">
-              <Calendar className="w-5 h-5 mr-1" />
-              Book Appointment
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </a>
-          <a href="#telemedicine">
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full sm:w-auto text-white border-2 border-white/50 bg-white/10 hover:bg-white/20"
-            >
-              <Video className="w-5 h-5 mr-1" />
-              Start Online Consultation
-            </Button>
-          </a>
+          <Button
+            size="lg"
+            variant="white"
+            className="w-full sm:w-auto text-sky-700 cursor-pointer"
+            onClick={() => openBooking()}
+          >
+            <Calendar className="w-5 h-5 mr-1" />
+            Book Appointment
+            <ArrowRight className="w-4 h-4 ml-1" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="w-full sm:w-auto text-white border-2 border-white/50 bg-white/10 hover:bg-white/20 cursor-pointer"
+            onClick={() => openBooking()}
+          >
+            <Video className="w-5 h-5 mr-1" />
+            Start Online Consultation
+          </Button>
         </motion.div>
 
         {/* Social Proof */}
@@ -119,10 +124,10 @@ export default function FinalCTA() {
             {['#0EA5E9', '#14B8A6', '#2563EB', '#7C3AED', '#F59E0B'].map((color, i) => (
               <div
                 key={i}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center text-xs sm:text-sm shadow-sm"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white flex items-center justify-center text-xs sm:text-sm shadow-sm text-white"
                 style={{ background: color }}
               >
-                {['👨', '👩', '👨🏽', '👩🏾', '👨🏻'][i]}
+                <User className="w-4 h-4 text-white" />
               </div>
             ))}
           </div>

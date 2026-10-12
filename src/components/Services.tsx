@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Video, Calendar, FileText, TestTube, HeartPulse, FolderOpen, ArrowRight } from 'lucide-react';
+import { Video, Calendar, FileText, TestTube, HeartPulse, FolderOpen, ArrowRight, Building2 } from 'lucide-react';
 import { SectionHeading, Badge } from './ui';
 
 const services = [
@@ -76,7 +76,12 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Reusable Section Header */}
         <SectionHeading
-          badge="🏥 Comprehensive Healthcare Services"
+          badge={
+            <span className="inline-flex items-center gap-1.5">
+              <Building2 className="w-4 h-4 text-sky-600" />
+              Comprehensive Healthcare Services
+            </span>
+          }
           badgeVariant="sky"
           title="Everything You Need,"
           gradientTitle="All in One Place"
