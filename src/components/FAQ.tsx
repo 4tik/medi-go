@@ -13,7 +13,7 @@ const faqs = [
     answer: 'For most medical concerns, telemedicine is equally effective as in-person visits. Our HD video platform allows doctors to conduct thorough consultations including visual assessments, symptom analysis, and reviewing uploaded medical documents. Studies show 85% of patient issues can be resolved remotely.',
   },
   {
-    question: 'How secure is my medical data on MediCare Pro?',
+    question: 'How secure is my medical data on Medi Go?',
     answer: 'Your privacy is our top priority. All data is protected with 256-bit AES encryption both in transit and at rest. We are SOC 2 Type II certified and follow HIPAA-inspired security practices. We never sell, share, or monetize your health data. You maintain complete ownership and control.',
   },
   {
@@ -22,10 +22,10 @@ const faqs = [
   },
   {
     question: 'What if I need emergency medical attention?',
-    answer: 'MediCare Pro is not for medical emergencies. If you are experiencing a medical emergency, please call 911 or go to your nearest emergency room immediately. For urgent but non-emergency situations, we offer same-day urgent care consultations with response times under 30 minutes.',
+    answer: 'Medi Go is not for medical emergencies. If you are experiencing a medical emergency, please call 911 or go to your nearest emergency room immediately. For urgent but non-emergency situations, we offer same-day urgent care consultations with response times under 30 minutes.',
   },
   {
-    question: 'Does MediCare Pro accept health insurance?',
+    question: 'Does Medi Go accept health insurance?',
     answer: 'We accept most major health insurance plans including Aetna, BlueCross BlueShield, Cigna, Humana, UnitedHealth, and Medicare Advantage. We also offer transparent self-pay pricing starting at $49 per consultation. Use our insurance checker tool to verify your coverage instantly.',
   },
   {
@@ -33,7 +33,7 @@ const faqs = [
     answer: 'For scheduled appointments, you can book a slot as soon as the same day. For on-demand urgent consultations, our average wait time is under 15 minutes. We have doctors available 24/7, including nights, weekends, and holidays.',
   },
   {
-    question: 'Can I get prescriptions through MediCare Pro?',
+    question: 'Can I get prescriptions through Medi Go?',
     answer: 'Yes! Our licensed physicians can prescribe most medications digitally. Prescriptions are electronically sent to your preferred pharmacy or can be delivered to your home. Controlled substances and certain medications may require an in-person visit as per state regulations.',
   },
 ];

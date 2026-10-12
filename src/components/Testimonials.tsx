@@ -9,7 +9,7 @@ const testimonials = [
     age: 34,
     treatment: 'Cardiology Consultation',
     rating: 5,
-    review: "MediCare Pro has completely transformed how I manage my heart condition. The video consultation with Dr. Chen was as thorough as any in-person visit. She reviewed my ECG, adjusted my medications, and sent the prescription to my pharmacy within minutes. I've saved hours of travel time!",
+    review: "Medi Go has completely transformed how I manage my heart condition. The video consultation with Dr. Chen was as thorough as any in-person visit. She reviewed my ECG, adjusted my medications, and sent the prescription to my pharmacy within minutes. I've saved hours of travel time!",
     avatar: '👩',
     location: 'New York, NY',
     date: '2 weeks ago',
@@ -19,7 +19,7 @@ const testimonials = [
     age: 52,
     treatment: 'Orthopedic Surgery Follow-up',
     rating: 5,
-    review: "After my knee replacement surgery, post-op follow-ups via MediCare Pro were incredibly convenient. The HD video quality was excellent. Dr. Marcus was thorough and addressed all my recovery concerns. The digital prescription for my pain management was sent directly to my pharmacy!",
+    review: "After my knee replacement surgery, post-op follow-ups via Medi Go were incredibly convenient. The HD video quality was excellent. Dr. Marcus was thorough and addressed all my recovery concerns. The digital prescription for my pain management was sent directly to my pharmacy!",
     avatar: '👨',
     location: 'Chicago, IL',
     date: '1 month ago',
@@ -39,7 +39,7 @@ const testimonials = [
     age: 45,
     treatment: 'Dermatology Treatment',
     rating: 5,
-    review: "I was skeptical about online dermatology, but MediCare Pro proved me wrong. The doctor examined my skin condition via video, diagnosed eczema, prescribed the right medication, and arranged a follow-up. My skin cleared up in 2 weeks. Absolutely professional service!",
+    review: "I was skeptical about online dermatology, but Medi Go proved me wrong. The doctor examined my skin condition via video, diagnosed eczema, prescribed the right medication, and arranged a follow-up. My skin cleared up in 2 weeks. Absolutely professional service!",
     avatar: '👨‍💼',
     location: 'Seattle, WA',
     date: '1 week ago',
@@ -49,7 +49,7 @@ const testimonials = [
     age: 38,
     treatment: 'Neurology Consultation',
     rating: 5,
-    review: "Managing my migraines got so much easier with MediCare Pro. Dr. Wilson spent 40 minutes understanding my history, ordered the right tests, and developed a personalized treatment plan. The secure messaging feature for follow-up questions is incredibly helpful.",
+    review: "Managing my migraines got so much easier with Medi Go. Dr. Wilson spent 40 minutes understanding my history, ordered the right tests, and developed a personalized treatment plan. The secure messaging feature for follow-up questions is incredibly helpful.",
     avatar: '👩🏾',
     location: 'Houston, TX',
     date: '2 months ago',
@@ -87,7 +87,7 @@ export default function Testimonials() {
           badgeVariant="amber"
           title="What Our"
           gradientTitle="Patients Say"
-          description="Over 50,000 patients trust MediCare Pro for their healthcare needs. Here's what they have to say."
+          description="Over 50,000 patients trust Medi Go for their healthcare needs. Here's what they have to say."
         />
 
         {/* Aggregate Review Badge */}

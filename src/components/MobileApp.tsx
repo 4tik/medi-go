@@ -40,7 +40,7 @@ export default function MobileApp() {
               </span>
             </h2>
             <p className="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl">
-              Download the MediCare Pro app and access world-class healthcare from anywhere. Manage appointments, consult doctors, view prescriptions, and track your health — all in one app.
+              Download the Medi Go app and access world-class healthcare from anywhere. Manage appointments, consult doctors, view prescriptions, and track your health — all in one app.
             </p>
 
             {/* App Features List */}
@@ -119,7 +119,7 @@ export default function MobileApp() {
                     {/* App Header */}
                     <div className="bg-gradient-to-r from-sky-500 to-blue-600 p-4 text-white">
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs font-bold">MediCare Pro</span>
+                        <span className="text-xs font-bold">Medi Go</span>
                         <Smartphone className="w-3.5 h-3.5" />
                       </div>
                       <div className="text-[11px] opacity-80 mb-0.5">Good morning, Sarah 👋</div>

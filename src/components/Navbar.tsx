@@ -38,7 +38,7 @@ export default function Navbar() {
       <div className="bg-gradient-to-r from-sky-600 to-blue-700 text-white text-xs py-1.5 px-4 text-center hidden md:block">
         <span className="flex items-center justify-center gap-2">
           <Phone className="w-3 h-3" />
-          24/7 Emergency: <strong>1-800-MEDICARE</strong>
+          24/7 Emergency: <strong>1-800-MEDI-GO</strong>
           <span className="mx-3 text-sky-300/60">|</span>
           <span>🩺 Free First Consultation for New Patients</span>
           <span className="mx-3 text-sky-300/60">|</span>
@@ -68,9 +68,9 @@ export default function Navbar() {
             </div>
             <div>
               <span className="text-xl font-bold bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
-                MediCare
+                Medi
               </span>
-              <span className="text-xl font-bold text-slate-800"> Pro</span>
+              <span className="text-xl font-bold text-slate-800"> Go</span>
               <div className="text-[9px] text-slate-400 leading-none font-semibold tracking-widest uppercase -mt-0.5">
                 Digital Health Platform
               </div>

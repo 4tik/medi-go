@@ -59,7 +59,7 @@ export default function Telemedicine() {
                   <div className="w-3 h-3 rounded-full bg-emerald-500" />
                 </div>
                 <div className="flex-1 mx-2 sm:mx-4 bg-slate-700/80 rounded-md px-3 py-1 text-[11px] sm:text-xs text-slate-300 truncate font-mono">
-                  app.medicarepro.com/video-call
+                  app.medi-go.com/video-call
                 </div>
                 <Shield className="w-4 h-4 text-emerald-400 flex-shrink-0" />
               </div>

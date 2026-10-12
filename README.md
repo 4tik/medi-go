@@ -1,5 +1,6 @@
-# Medi-Go (MediCare Pro)
+# Medi Go
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-medi--go--bd.vercel.app-000000?style=for-the-badge&logo=vercel)](https://medi-go-bd.vercel.app/)
 [![Vite](https://img.shields.io/badge/Vite-7.x-646CFF?style=flat&logo=vite&logoColor=white)](https://vite.dev/)
 [![React](https://img.shields.io/badge/React-19.x-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -9,9 +10,17 @@ A modern, high-performance digital healthcare landing page and platform web appl
 
 ---
 
+## 🌐 Live Preview
+
+The application is deployed and live on Vercel:
+👉 **[https://medi-go-bd.vercel.app/](https://medi-go-bd.vercel.app/)**
+
+---
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
+- [Live Preview](#-live-preview)
 - [Technology Stack](#technology-stack)
 - [Features](#features)
 - [Project Structure](#project-structure)
@@ -27,7 +36,7 @@ A modern, high-performance digital healthcare landing page and platform web appl
 
 ## Project Overview
 
-**Medi-Go** provides a responsive digital healthcare interface designed to streamline patient-to-doctor interactions. The application showcases telemedicine consultation capabilities, specialist discovery, health service packages, secure electronic health records (EHR), verified patient testimonials, and multi-platform mobile application integration.
+**Medi Go** provides a responsive digital healthcare interface designed to streamline patient-to-doctor interactions. The application showcases telemedicine consultation capabilities, specialist discovery, health service packages, secure electronic health records (EHR), verified patient testimonials, and multi-platform mobile application integration.
 
 ---
 
@@ -135,8 +144,9 @@ cp .env.example .env.local
 
 | Variable | Description | Default |
 |---|---|---|
-| `VITE_APP_NAME` | Name displayed in document title/metadata | `MediCare Pro` |
+| `VITE_APP_NAME` | Name displayed in document title/metadata | `Medi Go` |
 | `VITE_APP_DESCRIPTION` | Default platform description | `Your Trusted Digital Healthcare Partner` |
+| `VITE_APP_URL` | Live production URL | `https://medi-go-bd.vercel.app/` |
 
 ---
 
@@ -173,14 +183,12 @@ npm run preview
 ```
 
 ### 4. Deploying to Vercel
-This repository is configured to deploy directly to Vercel:
+This repository is configured to deploy directly to Vercel at **[https://medi-go-bd.vercel.app/](https://medi-go-bd.vercel.app/)**:
 1. Connect your GitHub repository `4tik/medi-go` in the Vercel Dashboard.
 2. Framework Preset: **Vite**
 3. Build Command: `npm run build`
 4. Output Directory: `dist`
 5. Install Command: `npm install`
-
-> **Note on Dependencies:** Ensure `vite-plugin-singlefile` is at version `^2.3.0` to avoid peer dependency conflicts with `vite@^7.x`.
 
 ---
 

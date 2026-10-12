@@ -61,7 +61,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-base sm:text-xl text-sky-100 mb-8 max-w-2xl mx-auto leading-relaxed"
         >
-          Join 50,000+ patients who trust MediCare Pro for their healthcare needs. Expert doctors, secure platform, seamless experience.
+          Join 50,000+ patients who trust Medi Go for their healthcare needs. Expert doctors, secure platform, seamless experience.
         </motion.p>
 
         {/* Benefits Checks */}

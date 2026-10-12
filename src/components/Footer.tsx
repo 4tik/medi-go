@@ -124,8 +124,8 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <span className="text-xl font-bold text-white">MediCare</span>
-                <span className="text-xl font-bold text-sky-400"> Pro</span>
+                <span className="text-xl font-bold text-white">Medi</span>
+                <span className="text-xl font-bold text-sky-400"> Go</span>
                 <div className="text-[9px] text-slate-400 leading-none font-semibold tracking-widest uppercase">
                   Digital Health Platform
                 </div>
@@ -140,11 +140,11 @@ export default function Footer() {
             <div className="space-y-2.5 mb-6">
               <div className="flex items-center gap-2 text-sm text-slate-300">
                 <Phone className="w-4 h-4 text-sky-400 flex-shrink-0" />
-                <span>1-800-MEDICARE (24/7)</span>
+                <span>1-800-MEDI-GO (24/7)</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-300">
                 <Mail className="w-4 h-4 text-sky-400 flex-shrink-0" />
-                <span>hello@medicarepro.com</span>
+                <span>hello@medi-go.com</span>
               </div>
               <div className="flex items-start gap-2 text-sm text-slate-300">
                 <MapPin className="w-4 h-4 text-sky-400 flex-shrink-0 mt-0.5" />
@@ -208,8 +208,8 @@ export default function Footer() {
                 911
               </a>{' '}
               or{' '}
-              <a href="tel:18002255234" className="text-sky-400 font-medium hover:underline">
-                1-800-MEDICARE
+              <a href="tel:1800633446" className="text-sky-400 font-medium hover:underline">
+                1-800-MEDI-GO
               </a>
             </div>
           </div>
@@ -221,7 +221,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
             <p className="text-xs text-slate-500">
-              © 2025 MediCare Pro, Inc. All rights reserved. MediCare Pro is not a substitute for professional medical advice.
+              © 2025 Medi Go, Inc. All rights reserved. Medi Go is not a substitute for professional medical advice.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Accessibility', 'Sitemap'].map((link) => (
