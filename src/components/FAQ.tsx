@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle, MessageSquare, Mail } from 'lucide-react';
+import { SectionHeading, Button } from './ui';
 
 const faqs = [
   {
@@ -43,108 +44,116 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-20 lg:py-28 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 border border-sky-100 text-sky-700 text-sm font-medium mb-4">
-            <HelpCircle className="w-4 h-4" />
-            Frequently Asked Questions
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4">
-            Got Questions?{' '}
-            <span className="text-gradient">We Have Answers</span>
-          </h2>
-          <p className="text-lg text-slate-500">
-            Everything you need to know about our healthcare platform, services, and technology.
-          </p>
-        </motion.div>
+        {/* Reusable Section Heading */}
+        <SectionHeading
+          badge={
+            <span className="inline-flex items-center gap-1.5">
+              <HelpCircle className="w-4 h-4" />
+              Frequently Asked Questions
+            </span>
+          }
+          badgeVariant="sky"
+          title="Got Questions?"
+          gradientTitle="We Have Answers"
+          description="Everything you need to know about our healthcare platform, services, and technology."
+        />
 
-        {/* FAQ Accordion */}
+        {/* FAQ Accordion List */}
         <div className="space-y-3">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.07 }}
-              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
-                openIndex === index
-                  ? 'border-sky-200 shadow-md shadow-sky-100/50'
-                  : 'border-slate-100 hover:border-slate-200'
-              }`}
-            >
-              <button
-                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-sky-50/50 transition-colors duration-200"
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                aria-expanded={openIndex === index}
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+                  isOpen
+                    ? 'border-sky-200 shadow-md shadow-sky-100/50'
+                    : 'border-slate-100 hover:border-slate-200'
+                }`}
               >
-                <div className="flex items-center gap-3">
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 transition-all duration-300 ${
-                    openIndex === index
-                      ? 'gradient-primary text-white'
-                      : 'bg-slate-100 text-slate-500'
-                  }`}>
-                    {index + 1}
-                  </div>
-                  <span className={`text-sm sm:text-base font-semibold transition-colors ${
-                    openIndex === index ? 'text-sky-700' : 'text-slate-800'
-                  }`}>
-                    {faq.question}
-                  </span>
-                </div>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex-shrink-0"
+                <button
+                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-sky-50/40 transition-colors duration-200 cursor-pointer"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
                 >
-                  <ChevronDown className={`w-5 h-5 transition-colors ${
-                    openIndex === index ? 'text-sky-500' : 'text-slate-400'
-                  }`} />
-                </motion.div>
-              </button>
-
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-sky-100 pt-4">
-                      <div className="ml-10">
-                        {faq.answer}
-                      </div>
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 transition-all duration-300 ${
+                        isOpen
+                          ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-sm'
+                          : 'bg-slate-100 text-slate-500'
+                      }`}
+                    >
+                      {index + 1}
                     </div>
+                    <span
+                      className={`text-sm sm:text-base font-semibold transition-colors ${
+                        isOpen ? 'text-sky-700' : 'text-slate-800'
+                      }`}
+                    >
+                      {faq.question}
+                    </span>
+                  </div>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex-shrink-0"
+                  >
+                    <ChevronDown
+                      className={`w-5 h-5 transition-colors ${
+                        isOpen ? 'text-sky-500' : 'text-slate-400'
+                      }`}
+                    />
                   </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                </button>
+
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-sky-100/80 pt-4">
+                        <div className="sm:ml-10">{faq.answer}</div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Contact CTA */}
+        {/* Contact Support Prompt Box */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-10 text-center p-6 rounded-2xl bg-gradient-to-br from-sky-50 to-teal-50 border border-sky-100"
+          className="mt-12 text-center p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-sky-50 via-teal-50/40 to-blue-50 border border-sky-100/80"
         >
-          <p className="text-slate-600 font-medium mb-3">Still have questions? We're here to help.</p>
+          <p className="text-slate-700 font-semibold mb-4">
+            Still have questions? Our care team is ready to help 24/7.
+          </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="#chat" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl gradient-primary shadow-md hover:shadow-sky-300/50 transition-all">
-              💬 Chat with Support
+            <a href="#chat">
+              <Button size="md" variant="primary">
+                <MessageSquare className="w-4 h-4 mr-1" />
+                Chat with Support
+              </Button>
             </a>
-            <a href="#email" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-slate-700 border border-slate-200 rounded-xl hover:bg-white transition-all bg-white/50">
-              📧 Email Us
+            <a href="#email">
+              <Button size="md" variant="outline" className="bg-white hover:bg-slate-50">
+                <Mail className="w-4 h-4 mr-1" />
+                Email Support Team
+              </Button>
             </a>
           </div>
         </motion.div>

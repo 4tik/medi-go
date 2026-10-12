@@ -16,53 +16,53 @@ import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-sky-500 selection:text-white">
       {/* Sticky Navigation */}
       <Navbar />
 
-      {/* Main Content */}
-      <main>
-        {/* 1. Hero Section */}
+      {/* Main Content Sections */}
+      <main id="main-content">
+        {/* 1. Hero Section with Live Search & Telemedicine highlights */}
         <Hero />
 
         {/* Trust Indicators Bar */}
         <TrustBar />
 
-        {/* 2. Services Section */}
+        {/* 2. Comprehensive Healthcare Services */}
         <Services />
 
-        {/* 3. Specialties Section */}
+        {/* 3. Medical Specialties */}
         <Specialties />
 
-        {/* 4. Featured Doctors */}
+        {/* 4. Featured Board-Certified Doctors */}
         <FeaturedDoctors />
 
-        {/* 5. How It Works */}
+        {/* 5. Simple 4-Step Patient Process */}
         <HowItWorks />
 
-        {/* 6. Telemedicine Showcase */}
+        {/* 6. Telemedicine Platform Showcase */}
         <Telemedicine />
 
-        {/* 7. Patient Testimonials */}
+        {/* 7. Patient Testimonials Carousel */}
         <Testimonials />
 
-        {/* 8. Healthcare Technology */}
+        {/* 8. Enterprise Healthcare Technology & Security */}
         <Technology />
 
-        {/* 9. Mobile App */}
+        {/* 9. Mobile App Showcase */}
         <MobileApp />
 
-        {/* 10. FAQ */}
+        {/* 10. Frequently Asked Questions Accordion */}
         <FAQ />
 
-        {/* 11. Final CTA */}
+        {/* 11. Final Call to Action */}
         <FinalCTA />
       </main>
 
-      {/* Footer */}
+      {/* Footer & Accreditations */}
       <Footer />
 
-      {/* Scroll to top button */}
+      {/* Floating Scroll to Top button */}
       <ScrollToTop />
     </div>
   );

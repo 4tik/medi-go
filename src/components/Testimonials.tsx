@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { SectionHeading } from './ui';
 
 const testimonials = [
   {
@@ -78,42 +79,37 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-20 lg:py-28" style={{ background: 'linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%)' }}>
+    <section className="py-20 lg:py-28 bg-gradient-to-br from-slate-50 via-sky-50/20 to-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-sm font-medium mb-4">
-            ⭐ Patient Stories
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4">
-            What Our{' '}
-            <span className="text-gradient">Patients Say</span>
-          </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-            Over 50,000 patients trust MediCare Pro for their healthcare needs. Here's what they have to say.
-          </p>
+        {/* Reusable Section Heading */}
+        <SectionHeading
+          badge="⭐ Patient Stories"
+          badgeVariant="amber"
+          title="What Our"
+          gradientTitle="Patients Say"
+          description="Over 50,000 patients trust MediCare Pro for their healthcare needs. Here's what they have to say."
+        />
 
-          {/* Overall rating */}
-          <div className="inline-flex items-center gap-3 mt-6 px-6 py-3 bg-white rounded-2xl shadow-md border border-slate-100">
+        {/* Aggregate Review Badge */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex flex-wrap items-center justify-center gap-3 px-6 py-3 bg-white rounded-2xl shadow-md border border-slate-100 text-center">
             <div className="text-3xl font-extrabold text-slate-900">4.9</div>
             <div>
-              <div className="flex">
-                {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+              <div className="flex justify-center">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                ))}
               </div>
               <div className="text-xs text-slate-500 mt-0.5">Based on 28,450 reviews</div>
             </div>
-            <div className="h-8 w-px bg-slate-200 mx-2" />
-            <div className="text-sm font-medium text-slate-600">Verified on Google, Healthgrades & Zocdoc</div>
+            <div className="hidden sm:block h-8 w-px bg-slate-200 mx-2" />
+            <div className="text-xs sm:text-sm font-medium text-slate-600">
+              Verified on Google, Healthgrades & Zocdoc
+            </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Carousel */}
+        {/* Carousel Container */}
         <div className="relative max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
@@ -122,14 +118,14 @@ export default function Testimonials() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-10 relative"
+              className="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-10 relative overflow-hidden"
             >
-              {/* Quote icon */}
-              <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center">
+              {/* Quote icon watermark */}
+              <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center pointer-events-none">
                 <Quote className="w-6 h-6 text-sky-400" />
               </div>
 
-              {/* Stars */}
+              {/* Star rating */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonials[current].rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
@@ -142,29 +138,31 @@ export default function Testimonials() {
               </div>
 
               {/* Review text */}
-              <blockquote className="text-lg text-slate-700 leading-relaxed mb-6 italic">
+              <blockquote className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6 italic">
                 "{testimonials[current].review}"
               </blockquote>
 
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-2xl">
+              {/* Author profile */}
+              <div className="flex items-center gap-4 pt-2 border-t border-slate-100">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-2xl shadow-sm flex-shrink-0">
                   {testimonials[current].avatar}
                 </div>
                 <div>
-                  <div className="font-bold text-slate-800">{testimonials[current].name}, {testimonials[current].age}</div>
-                  <div className="text-sm text-slate-500">{testimonials[current].location}</div>
+                  <div className="font-bold text-slate-800 text-sm sm:text-base">
+                    {testimonials[current].name}, {testimonials[current].age}
+                  </div>
+                  <div className="text-xs text-slate-500">{testimonials[current].location}</div>
                 </div>
                 <div className="ml-auto text-xs text-slate-400">{testimonials[current].date}</div>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation */}
+          {/* Carousel controls */}
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-sky-50 hover:border-sky-200 transition-all shadow-sm"
+              className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-sky-50 hover:border-sky-200 transition-all shadow-sm cursor-pointer"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5 text-slate-600" />
@@ -174,8 +172,11 @@ export default function Testimonials() {
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => { setIsAutoPlaying(false); setCurrent(i); }}
-                  className={`transition-all duration-300 rounded-full ${
+                  onClick={() => {
+                    setIsAutoPlaying(false);
+                    setCurrent(i);
+                  }}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
                     i === current ? 'w-8 h-2.5 bg-sky-500' : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
@@ -185,7 +186,7 @@ export default function Testimonials() {
 
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-sky-50 hover:border-sky-200 transition-all shadow-sm"
+              className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-sky-50 hover:border-sky-200 transition-all shadow-sm cursor-pointer"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5 text-slate-600" />
@@ -193,7 +194,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Trust logos */}
+        {/* Featured By trust logos */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -201,10 +202,14 @@ export default function Testimonials() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <p className="text-sm text-slate-400 font-medium uppercase tracking-widest mb-6">Trusted & Featured By</p>
-          <div className="flex flex-wrap items-center justify-center gap-8 opacity-40">
+          <p className="text-xs sm:text-sm text-slate-400 font-semibold uppercase tracking-widest mb-6">
+            Trusted & Featured By
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-50">
             {['Healthgrades', 'WebMD', 'Zocdoc', 'JAMA Network', 'Mayo Clinic', 'AMA'].map((brand) => (
-              <div key={brand} className="text-slate-600 font-bold text-lg">{brand}</div>
+              <div key={brand} className="text-slate-700 font-bold text-base sm:text-lg">
+                {brand}
+              </div>
             ))}
           </div>
         </motion.div>

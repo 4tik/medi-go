@@ -12,7 +12,7 @@ export default function TrustBar() {
   return (
     <section className="py-8 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {trustItems.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -22,9 +22,9 @@ export default function TrustBar() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="flex items-center gap-3 p-3 rounded-xl hover:bg-sky-50 transition-colors group"
+                className="flex items-center gap-3.5 p-3.5 rounded-2xl hover:bg-sky-50/70 border border-transparent hover:border-sky-100 transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-sm flex-shrink-0 group-hover:scale-110 transition-transform">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 flex items-center justify-center shadow-md shadow-sky-500/20 flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
                   <Icon className="w-5 h-5 text-white" />
                 </div>
                 <div>
