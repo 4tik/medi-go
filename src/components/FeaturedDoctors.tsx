@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Star, Clock, Calendar, BadgeCheck, Video, UserCheck } from 'lucide-react';
-import { Button, Badge } from './ui';
+import { Button, Badge, Card } from './ui';
 import { useModal } from '../context/ModalContext';
 
 const doctors = [
@@ -110,13 +110,13 @@ export default function FeaturedDoctors() {
         {/* Doctor Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {doctors.map((doctor, index) => (
-            <motion.div
+            <Card
               key={doctor.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-white border border-slate-100 rounded-2xl shadow-sm hover:-translate-y-1.5 hover:shadow-xl hover:shadow-sky-500/10 hover:border-sky-100 overflow-hidden transition-all duration-300"
+              className="group overflow-hidden"
             >
               {/* Doctor portrait */}
               <div className="relative h-52 overflow-hidden bg-gradient-to-br from-sky-50 to-teal-50">
@@ -209,7 +209,7 @@ export default function FeaturedDoctors() {
                   </Button>
                 </div>
               </div>
-            </motion.div>
+            </Card>
           ))}
         </div>
       </div>

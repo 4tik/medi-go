@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Video, Calendar, FileText, TestTube, HeartPulse, FolderOpen, ArrowRight, Building2 } from 'lucide-react';
-import { SectionHeading, Badge } from './ui';
+import { SectionHeading, Badge, Card } from './ui';
 
 const services = [
   {
@@ -99,10 +99,10 @@ export default function Services() {
           {services.map((service) => {
             const Icon = service.icon;
             return (
-              <motion.div
+              <Card
                 key={service.title}
                 variants={cardVariants}
-                className={`group relative p-6 rounded-2xl bg-white border ${service.border} shadow-sm hover:-translate-y-1.5 hover:shadow-xl hover:shadow-sky-500/10 cursor-pointer overflow-hidden transition-all duration-300`}
+                className={`group relative p-6 ${service.border} cursor-pointer overflow-hidden`}
               >
                 {/* Subtle hover gradient wash */}
                 <div
@@ -138,7 +138,7 @@ export default function Services() {
                   <span>Learn more</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
-              </motion.div>
+              </Card>
             );
           })}
         </motion.div>

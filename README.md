@@ -202,7 +202,7 @@ To maintain visual consistency and prevent code duplication, follow these guidel
    import { SectionHeading } from './ui';
 
    <SectionHeading
-     badge="🩺 Medical Specialties"
+     badge="Medical Specialties"
      badgeVariant="teal"
      title="Find the Right"
      gradientTitle="Medical Specialists"
@@ -231,9 +231,38 @@ To maintain visual consistency and prevent code duplication, follow these guidel
    ```
 
 4. **Elevation Cards:**
-   Use `<Card />` for consistent border, shadow, and hover transition states.
+   Use `<Card />` for consistent border, shadow, and hover transition states:
+   ```tsx
+   import { Card } from './ui';
 
-5. **Generic Modals & Dialogs:**
+   <Card className="p-6">
+     {/* Card content */}
+   </Card>
+   ```
+
+5. **Form Controls (`Input` & `Select`):**
+   Use `<Input />` and `<Select />` for high-contrast, accessible form fields:
+   ```tsx
+   import { Input, Select } from './ui';
+
+   <Input
+     label="Full Name"
+     required
+     placeholder="e.g. John Doe"
+     value={name}
+     onChange={(e) => setName(e.target.value)}
+   />
+
+   <Select
+     label="Specialty"
+     value={specialty}
+     onChange={(e) => setSpecialty(e.target.value)}
+   >
+     <option value="cardiology">Cardiology</option>
+   </Select>
+   ```
+
+6. **Generic Modals & Dialogs:**
    Use `<ModalEl />` for reusable modals with width managed via the `maxWidth` prop:
    ```tsx
    import { ModalEl } from './ui';
@@ -241,7 +270,7 @@ To maintain visual consistency and prevent code duplication, follow these guidel
    <ModalEl
      isOpen={isOpen}
      onClose={handleClose}
-     maxWidth="md" // 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
+     maxWidth="lg" // 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
      title="Modal Title"
      subtitle="Modal description"
    >

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ChevronLeft, ChevronRight, Quote, Stethoscope, User } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote, Stethoscope } from 'lucide-react';
 import { SectionHeading } from './ui';
 
 const testimonials = [

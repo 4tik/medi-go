@@ -6,14 +6,6 @@ export interface UserSession {
   role: 'patient' | 'doctor';
 }
 
-export interface BookingDetails {
-  doctorName?: string;
-  specialty?: string;
-  date?: string;
-  time?: string;
-  type?: 'video' | 'clinic';
-}
-
 interface ModalContextType {
   isLoginOpen: boolean;
   loginRole: 'patient' | 'doctor';

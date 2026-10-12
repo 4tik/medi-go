@@ -11,7 +11,7 @@ import {
   Eye,
   Stethoscope,
 } from 'lucide-react';
-import { SectionHeading, Button } from './ui';
+import { SectionHeading, Button, Card } from './ui';
 
 const specialties = [
   {
@@ -114,14 +114,13 @@ export default function Specialties() {
           {specialties.map((specialty, index) => {
             const Icon = specialty.icon;
             return (
-              <motion.div
+              <Card
                 key={specialty.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.06 }}
-                whileHover={{ y: -6 }}
-                className={`group relative p-5 rounded-2xl bg-white border ${specialty.border} shadow-sm hover:shadow-lg hover:shadow-teal-500/5 cursor-pointer transition-all duration-300`}
+                className={`group relative p-5 ${specialty.border} cursor-pointer hover:shadow-teal-500/5`}
               >
                 {/* Icon */}
                 <div
@@ -150,7 +149,7 @@ export default function Specialties() {
                     <ArrowRight className="w-3 h-3 text-white" />
                   </div>
                 </div>
-              </motion.div>
+              </Card>
             );
           })}
         </div>

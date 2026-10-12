@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Shield, Brain, Activity, Bell, Lock, Database, Zap, Cpu } from 'lucide-react';
-import { SectionHeading } from './ui';
+import { SectionHeading, Card } from './ui';
 
 const features = [
   {
@@ -97,13 +97,13 @@ export default function Technology() {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <motion.div
+              <Card
                 key={feature.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group p-6 rounded-2xl border border-slate-100 hover:border-sky-100 bg-white hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1.5 transition-all duration-300"
+                className="group p-6"
               >
                 {/* Icon & Stat Header */}
                 <div className="flex items-start justify-between mb-4">
@@ -126,7 +126,7 @@ export default function Technology() {
                 <p className="text-sm text-slate-500 leading-relaxed">
                   {feature.description}
                 </p>
-              </motion.div>
+              </Card>
             );
           })}
         </div>
